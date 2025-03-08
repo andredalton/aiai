@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AiAi WTF!!!</title>
+    <style>
+        html {
+            height: 100%; /* Certifica-se de que o html ocupa toda a altura da página */
+        }
+        
+        body {
+            margin: 0;
+            height: 100%; /* O corpo também ocupa toda a altura */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #000; /* Cor de fundo preta */
+            background-image: url('penywise.jpg');
+            background-size: auto 90vh; /* Ajusta a altura da imagem para 90% da altura da viewport */
+            background-position: bottom center; /* Posiciona a imagem na parte inferior */
+            background-repeat: no-repeat; /* Evita que a imagem se repita */
+            transition: background-image 0.5s; /* Transição suave para remover a imagem */
+        }
+        
+        .mensagem {
+            text-align: center;
+            position: fixed; /* Fixa a mensagem no topo */
+            top: 10px; /* Espaçamento do topo */
+            left: 50%; /* Centraliza horizontalmente */
+            transform: translateX(-50%); /* Ajusta a posição para o centro */
+            font-size: 21px;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            text-shadow: 0px 0px 5px #000; /* Sombra para melhor legibilidade */
+        }
+        
+        #iniciar {
+            position: absolute; /* Posiciona o botão absolutamente */
+            top: 50%; /* Centraliza verticalmente */
+            left: 50%; /* Centraliza horizontalmente */
+            transform: translate(-50%, -50%); /* Ajusta a posição para o centro */
+            font-size: 16px;
+            font-family: Comic Sans MS;
+            width: 250px;
+            height: 36px;
+            border-width: 0px;
+            color: #ffffff;
+            border-color: #54381e;
+            border-radius: 21px;
+            box-shadow: inset 0px 1px 0px 0px #a6827e;
+            text-shadow: inset 0px 1px 0px #54381e;
+            background: linear-gradient(#7d5d3b, #634b30);
+            transition: background 0.3s ease, opacity 0.5s; /* Transição suave para opacidade */
+            z-index: 1; /* Garante que o botão fique na frente */
+        }
+        
+        #iniciar:hover {
+            background: linear-gradient(#634b30, #7d5d3b);
+        }
+        
+        #meuVideo {
+            display: none; /* Inicialmente invisível */
+            width: 640px;
+            height: 480px;
+            margin-top: 20px; /* Espaçamento após o botão */
+        }
+        
+        #textoVideo {
+            display: none; /* Inicialmente invisível */
+            text-align: center;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            text-shadow: 0px 0px 5px #000; /* Sombra para melhor legibilidade */
+        }
+        
+        /* Efeito de fade-in */
+        .fadeIn {
+            animation: fadeIn 5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        #timer {
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            text-shadow: 0px 0px 5px #000; /* Sombra para melhor legibilidade */
+        }
+    </style>
+</head>
+<body>
+    <div class="mensagem">Se fossem uvas ao invés de balões?<br />Você teria coragem?</div>
+    <button id="iniciar">Teste a sua coragem agora!</button>
+    
+    <div id="conteudo">
+        <div id="textoVideo">Lasier Martins também foi muito corajoso!<br />
+            <span id="timer">Mais notícias em breve: </span>
+        </div>
+        <video id="meuVideo" loop>
+            <source src="seu_video.mp4" type="video/mp4">
+            Seu navegador não suporta a tag vídeo.
+        </video>    
+    </div>
+
+    <script>
+        const video = document.getElementById('meuVideo');
+        const textoVideo = document.getElementById('textoVideo');
+        const button = document.getElementById('iniciar');
+        const body = document.body;
+        const timerElement = document.getElementById('timer');
+
+        button.addEventListener('click', iniciarVideo);
+
+        function iniciarVideo() {
+            // Configurações iniciais
+            video.currentTime = 20; // Inicia no segundo 20
+            video.play(); // Inicia a reprodução
+            
+            // Mostrar vídeo com efeito de fade-in
+            video.style.display = 'block';
+            video.classList.add('fadeIn');
+
+            // Mostrar texto com efeito de fade-in
+            textoVideo.style.display = 'block';
+            textoVideo.classList.add('fadeIn');
+
+            // Remover a imagem de fundo
+            body.style.backgroundImage = 'none';
+
+            // Tornar o botão transparente
+            button.style.opacity = 0;
+
+            // Controle do loop personalizado
+            video.addEventListener('timeupdate', controlarLoop);
+        }
+
+        function controlarLoop() {
+            if (video.currentTime >= 21) { // Quando chegar em 21s
+                video.currentTime = 20; // Reinicia para 20s
+                video.play(); // Mantém a reprodução
+            }
+        }
+
+        // Configuração do timer
+        const countDownDate = new Date("2025-03-15T21:00:00").getTime();
+        let intervalId;
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            if (distance < 0) {
+                clearInterval(intervalId);
+                timerElement.innerHTML = "Mais notícias em breve. Tempo expirado!";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            timerElement.innerHTML = `Mais notícias em breve: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        intervalId = setInterval(updateTimer, 1000);
+        updateTimer(); // Atualiza imediatamente
+    </script>
+</body>
+</html>
