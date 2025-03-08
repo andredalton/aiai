@@ -28,7 +28,7 @@
             top: 10px; /* Espaçamento do topo */
             left: 50%; /* Centraliza horizontalmente */
             transform: translateX(-50%); /* Ajusta a posição para o centro */
-            font-size: 21px;
+            font-size: 1.5vw; /* Tamanho da fonte em relação à largura da tela */
             font-family: Arial, sans-serif;
             color: #ffffff;
             text-shadow: 0px 0px 5px #000; /* Sombra para melhor legibilidade */
@@ -39,16 +39,16 @@
             top: 50%; /* Centraliza verticalmente */
             left: 50%; /* Centraliza horizontalmente */
             transform: translate(-50%, -50%); /* Ajusta a posição para o centro */
-            font-size: 16px;
+            font-size: 1.5vw; /* Tamanho da fonte em relação à largura da tela */
             font-family: Comic Sans MS;
-            width: 250px;
-            height: 36px;
+            width: 25vw; /* Largura em relação à largura da tela */
+            height: 4vh; /* Altura em relação à altura da tela */
             border-width: 0px;
             color: #ffffff;
             border-color: #54381e;
-            border-radius: 21px;
-            box-shadow: inset 0px 1px 0px 0px #a6827e;
-            text-shadow: inset 0px 1px 0px #54381e;
+            border-radius: 1.5vh; /* Raio do canto em relação à altura da tela */
+            box-shadow: inset 0px 0.5vh 0px 0px #a6827e;
+            text-shadow: inset 0px 0.5vh 0px #54381e;
             background: linear-gradient(#7d5d3b, #634b30);
             transition: background 0.3s ease, opacity 0.5s; /* Transição suave para opacidade */
             z-index: 1; /* Garante que o botão fique na frente */
@@ -60,15 +60,22 @@
         
         #meuVideo {
             display: none; /* Inicialmente invisível */
-            width: 640px;
-            height: 480px;
-            margin-top: 20px; /* Espaçamento após o botão */
+            width: 80vw; /* Largura em relação à largura da tela */
+            height: 60vh; /* Altura em relação à altura da tela */
+            margin-top: 2vh; /* Espaçamento após o botão */
         }
         
         #textoVideo {
             display: none; /* Inicialmente invisível */
             text-align: center;
-            font-size: 24px;
+            font-size: 1.5vw; /* Tamanho da fonte em relação à largura da tela */
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            text-shadow: 0px 0px 5px #000; /* Sombra para melhor legibilidade */
+        }
+        
+        #timer {
+            font-size: 1.5vw; /* Tamanho da fonte em relação à largura da tela */
             font-family: Arial, sans-serif;
             color: #ffffff;
             text-shadow: 0px 0px 5px #000; /* Sombra para melhor legibilidade */
@@ -82,13 +89,6 @@
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
-        }
-        
-        #timer {
-            font-size: 24px;
-            font-family: Arial, sans-serif;
-            color: #ffffff;
-            text-shadow: 0px 0px 5px #000; /* Sombra para melhor legibilidade */
         }
     </style>
 </head>
