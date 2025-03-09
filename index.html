@@ -28,10 +28,11 @@
             top: 10px; /* Espaçamento do topo */
             left: 50%; /* Centraliza horizontalmente */
             transform: translateX(-50%); /* Ajusta a posição para o centro */
-            font-size: 1.5vw; /* Tamanho da fonte em relação à largura da tela */
+            font-size: 2vh; /* Tamanho da fonte em relação à largura da tela */
             font-family: Arial, sans-serif;
             color: #ffffff;
             text-shadow: 0px 0px 5px #000; /* Sombra para melhor legibilidade */
+            width: 100vw;
         }
         
         #iniciar {
@@ -39,9 +40,9 @@
             top: 50%; /* Centraliza verticalmente */
             left: 50%; /* Centraliza horizontalmente */
             transform: translate(-50%, -50%); /* Ajusta a posição para o centro */
-            font-size: 1.5vw; /* Tamanho da fonte em relação à largura da tela */
+            font-size: 2vh; /* Tamanho da fonte em relação à largura da tela */
             font-family: Comic Sans MS;
-            width: 25vw; /* Largura em relação à largura da tela */
+            width: max-content; /* Largura em relação à largura da tela */
             height: 4vh; /* Altura em relação à altura da tela */
             border-width: 0px;
             color: #ffffff;
@@ -52,6 +53,8 @@
             background: linear-gradient(#7d5d3b, #634b30);
             transition: background 0.3s ease, opacity 0.5s; /* Transição suave para opacidade */
             z-index: 1; /* Garante que o botão fique na frente */
+            padding-left: 2vw;
+            padding-right: 2vw;
         }
         
         #iniciar:hover {
@@ -68,14 +71,14 @@
         #textoVideo {
             display: none; /* Inicialmente invisível */
             text-align: center;
-            font-size: 1.5vw; /* Tamanho da fonte em relação à largura da tela */
+            font-size: 2vh; /* Tamanho da fonte em relação à largura da tela */
             font-family: Arial, sans-serif;
             color: #ffffff;
             text-shadow: 0px 0px 5px #000; /* Sombra para melhor legibilidade */
         }
         
         #timer {
-            font-size: 1.5vw; /* Tamanho da fonte em relação à largura da tela */
+            font-size: 2vh; /* Tamanho da fonte em relação à largura da tela */
             font-family: Arial, sans-serif;
             color: #ffffff;
             text-shadow: 0px 0px 5px #000; /* Sombra para melhor legibilidade */
